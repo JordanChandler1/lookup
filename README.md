@@ -120,7 +120,7 @@ Each requestor removes an item from the request queue and checks a in-process ca
 
 The request then waits on a shared semaphore for an open request slot.  On started, requests slots are initialize at the web service's gate limit.  When a slot becomes available, the requestor() receives this slot and the slot beconmes unavailable to other requestor()s.  When requestor()s complete the request, the request slot is released.  In this way, lookup_get prevents web service overruns.  The client should not receive a status code 429 if lookup_client is the only user of the web service.  If 429's are received, lookup_get handles it by rolling back the request so it can be retried by other threads.
 
-The requestor then issues the request.  lookup-server returns a a JSON response payload that indicates if the item was found (in inventory as an example).  
+The requestor then issues the request.  lookup-server returns a JSON response payload that indicates if the item was found (in inventory as an example).  
 
 The request handling is dictated by the HTTP status code returned by the web service.
 

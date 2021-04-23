@@ -43,7 +43,7 @@ to listen on port 8080 for requests to .../items/:id with authorization header Y
 
 To see the lookup_server's available parameters and defaults, execute:
 ```
-        node look_server.js -h
+        node lookup_server.js -h
 ```
 which produces the follwing output:
 ```
@@ -176,4 +176,5 @@ The following issues should be considered if further functional or performance i
 1. lookup_get's requestor() takes overhead to access the shared request queue and reponse cache.  This overhead is repeated for each item queried.  Consider popping multiple items off the queue on each pass to minimize the number of times the shared objects are locked.
 1. Non-C++ clients cannot use lookup_get directly.  Considure a Python callable library implementation.
 1. lookup_get's requestor() requeues items that receive a rate limit exceeded reposnse (429) and then immediately continue to remove and process items from the request queue.  Considure implementing flow control logic to backoff the request rate until (globally) the number of 429 responses decreases or some overall effeiciency emtric is improved.
+1. An unhandled exception handler should be registered for the requester() threads so that a single thread having an exception does not cause the program to terminate.
 

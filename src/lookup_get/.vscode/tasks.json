@@ -1,0 +1,36 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "Compile gated-get",
+			"command": "/usr/bin/g++",
+			"args": [
+				"-std=c++17",
+				"-fPIC",
+				"-Iinclude",
+				"-c",
+				"${workspaceFolder}/lookup_get.cpp",
+				"-g",
+				"-lpthread",
+				"-L/usr/lib/curl",
+				"-lcurl",
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: /usr/bin/g++"
+		},
+		{
+			"label": "Build All",
+			"dependsOn": ["Compile gated-get", "Server Build"]
+		  }
+	]
+}

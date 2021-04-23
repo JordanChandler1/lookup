@@ -1,0 +1,14 @@
+{
+  "name": "lookup_server",
+  "version": "1.0.0",
+  "description": "lookup_server is RESTful Web API server for rate limited item look up.  It works in conjunction with lookup+client which makes rate limited Web API calls.",
+  "main": "lookup_server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jordan Chandler",
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^16.2.0"
+  }
+}
